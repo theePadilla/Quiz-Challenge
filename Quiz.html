@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <title>Quiz</title>      
+    </head>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+
+    <script src="script.js"></script>
+
+    <div id="intro">
+        <h1>Welcome to my Quiz</h1>
+        <h2 id="headerText">What is your name?</h2> <br>
+    </div>
+
+
+        
+    <div id="welcomeInput">
+        <input id="userName"> <br><br> 
+        <button onclick="welcome()">Submit</button>
+    </div>
+
+    <div id="quiz"> 
+        <h2 id="question"></h2>
+        <div id ="answerA" onclick="aFunction()"></div>
+        <div id ="answerB" onclick="bFunction()"></div>
+        <div id ="answerC" onclick="cFunction()"></div>
+        <div id ="answerD" onclick="dFunction()"></div> <br>
+
+        <div id ="Q1Button" onclick="submitQn1()"><button>Submit 1</button></div>
+        <div id ="Q2Button" onclick="submitQn2()"><button>Submit 2</button></div>
+        <div id ="Q3Button" onclick="submitQn3()"><button>Submit 3</button></div>
+        <div id ="Q4Button" onclick="submitQn4()"><button>Submit 4</button></div>
+        <div id ="Q5Button" onclick="submitQn5()"><button>Submit 5</button></div>
+    </div>
+
+   
+   <style>
+        #intro {text-align: center; font-family:Georgia, 'Times New Roman', Times, serif;color:blue}
+        #welcomeInput {text-align: center; font-family:Georgia, 'Times New Roman', Times, serif;color:blue}
+        #quiz {text-align: center; color:blue;font-size:20px;}
+        body {background-color:lightblue;}
+    </style>
+
+        
+    <script>
+        var userName = document.querySelector("#userName");
+        var headerText = document.querySelector("#headerText");
+        var welcomeInput = document.querySelector("#welcomeInput");
+        var quiz = document.querySelector("#quiz");
+        var Q1Button = document.querySelector("#Q1Button");
+        var Q2Button = document.querySelector("#Q2Button");
+        var Q3Button = document.querySelector("#Q3Button");
+        var Q4Button = document.querySelector("#Q4Button");
+        var Q5Button = document.querySelector("#Q5Button");
+        var question = document.querySelector("#question");
+        var answerA = document.querySelector("#answerA");
+        var answerB = document.querySelector("#answerB");
+        var answerC = document.querySelector("#answerC");
+        var answerD = document.querySelector("#answerD");
+        var questionNumber = 0;
+        var qnChoice = "";
+        var score = 0;
+
+        var questionList = [
+            "1) Commonly used data types DO NOT include:",
+            "2) The condition in an if / else statement is enclosed within ___.",
+            "3) Arrays in JavaScript can be used to store ___.",
+            "4) String values must be enclosed within ___ when being assigned to variables.",
+            "5) A very useful tool used during development and debugging for printing content to the debugge is:"
+        ]
+
+        var aAnswerList = ["strings", "quotes", "number and strings", "commas", "JavaScript"]
+        var bAnswerList = ["booleans", "curly brackets", "other arrays", "curly brackets", "terminal / bash"]
+        var cAnswerList = ["alerts", "parenthesis", "booleans", "quotes","for loops"]
+        var dAnswerList = ["numbers", "square brackets", "all of the above","parenthesis","console log"]
+
+        quiz.style.display = "none";
+        Q1Button.style.display = "none";
+        Q2Button.style.display = "none";
+        Q3Button.style.display = "none";
+        Q4Button.style.display = "none";
+        Q5Button.style.display = "none";
+
+    
+
+        
+
+        function welcome() {
+            headerText.innerHTML = ""
+            headerText.innerHTML = "Hello " + userName.value + " , let's test your coding knowledge."
+            welcomeInput.style.display = "none"
+            quiz.style.display = "block"
+            Q1Button.style.display = "block";
+            question.innerHTML = questionList[questionNumber];
+            answerA.innerHTML = aAnswerList[questionNumber];
+            answerB.innerHTML = bAnswerList[questionNumber];
+            answerC.innerHTML = cAnswerList[questionNumber];
+            answerD.innerHTML = dAnswerList[questionNumber];
+
+            
+
+        }
+        function aFunction() {
+            answerA.style.color = "green";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+            qnChoice = "a";
+        }
+
+        function bFunction() {
+            answerA.style.color = "blue";
+            answerB.style.color = "green";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+            qnChoice = "b";
+
+        }
+
+        function cFunction() {
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "green";
+            answerD.style.color = "blue";
+            qnChoice = "c";
+
+        }
+
+        function dFunction() {
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "green";
+            qnChoice = "d";
+
+        }
+
+        function submitQn1() {
+            if (qnChoice == "b"){
+                score += 1;
+            }
+            Q1Button.style.display = "none";
+            Q2Button.style.display = "block";
+            questionNumber += 1;
+   
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+
+            question.innerHTML = questionList[questionNumber]; 
+            answerA.innerHTML = aAnswerList[questionNumber];
+            answerB.innerHTML = bAnswerList[questionNumber];
+            answerC.innerHTML = cAnswerList[questionNumber];
+            answerD.innerHTML = dAnswerList[questionNumber];
+
+        }
+
+        function submitQn2() {
+            if (qnChoice == "c"){
+                score += 1;
+            }
+            Q2Button.style.display = "none";
+            Q3Button.style.display = "block";
+            questionNumber += 1;
+            
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+
+            question.innerHTML = questionList[questionNumber]; 
+            answerA.innerHTML = aAnswerList[questionNumber];
+            answerB.innerHTML = bAnswerList[questionNumber];
+            answerC.innerHTML = cAnswerList[questionNumber];
+            answerD.innerHTML = dAnswerList[questionNumber];
+        }
+
+        function submitQn3() {
+            if (qnChoice == "d"){
+                score += 1;
+            }
+            Q3Button.style.display = "none";
+            Q4Button.style.display = "block";
+            questionNumber += 1;
+            
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+
+            question.innerHTML = questionList[questionNumber];
+            answerA.innerHTML = aAnswerList[questionNumber];
+            answerB.innerHTML = bAnswerList[questionNumber];
+            answerC.innerHTML = cAnswerList[questionNumber];
+            answerD.innerHTML = dAnswerList[questionNumber];
+        }
+
+        function submitQn4() {
+            if (qnChoice == "b"){
+                score += 1;
+            }
+            Q4Button.style.display = "none";
+            Q5Button.style.display = "block";
+            questionNumber += 1;
+            
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+
+            question.innerHTML = questionList[questionNumber];
+            answerA.innerHTML = aAnswerList[questionNumber];
+            answerB.innerHTML = bAnswerList[questionNumber];
+            answerC.innerHTML = cAnswerList[questionNumber];
+            answerD.innerHTML = dAnswerList[questionNumber];
+        }
+
+        function submitQn5() {
+            if (qnChoice == "c"){
+                score += 1;
+            }           
+            questionNumber += 1;
+            headerText.innerHTML = "Your Score is " + score;
+            quiz.style.display = "none";
+
+            answerA.style.color = "blue";
+            answerB.style.color = "blue";
+            answerC.style.color = "blue";
+            answerD.style.color = "blue";
+            
+        }
+        
+
+    </script>
+
+</body>
+</html>
